@@ -533,6 +533,17 @@ pub enum Event {
 }
 
 impl Event {
+    /// Returns the corresponding usize for F1, F2, F3 and F4.
+    pub fn f_num(&self) -> Option<usize> {
+        match *self {
+            Event::Key(Key::F1) => Some(1),
+            Event::Key(Key::F2) => Some(2),
+            Event::Key(Key::F3) => Some(3),
+            Event::Key(Key::F4) => Some(4),
+            _ => None,
+        }
+    }
+
     /// Returns the character, if `self` is a char event.
     pub fn char(&self) -> Option<char> {
         match *self {
